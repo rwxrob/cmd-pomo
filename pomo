@@ -92,6 +92,8 @@ command_start() {
     "$(date -u +%s -d "+ $((${CONFIG[duration.session]}+1)) min")"
 }
 
+command_stop() { _config_set end ""; }
+
 ############################## BOILERPLATE ###########################
 ## Everything from here to the end of file can be snipped and updated
 ## with latest from https://github.com/rwxrob/template-bash-command.
