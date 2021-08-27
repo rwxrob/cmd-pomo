@@ -349,7 +349,7 @@ _buffer() {
 }
 
 # --------------------- completion and delegation --------------------
-#         (better than . <(foo bloated_completion) in .bashrc)
+#      `complete -C foo foo` > `source <(foo bloated_completion)`
 
 while IFS= read -r line; do
   [[ $line =~ ^declare\ -f\ command_ ]] || continue
@@ -365,13 +365,6 @@ if [[ -n $COMP_LINE ]]; then
   done
   exit
 fi
-
-for c in "${COMMANDS[@]}"; do
-  if [[ $c == "$EXE" ]]; then
-    "command_$EXE" "$@"
-    exit $?
-  fi
-done
 
 _config_read
 _initialize
